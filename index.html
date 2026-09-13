@@ -4,24 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Richard Richi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --forest: #1a2e1e;
-      --moss:   #2d4a2f;
-      --sage:   #7a9e6e;
-      --stone:  #c8bfad;
-      --cream:  #f0ece4;
-      --amber:  #d4813a;
-      --slate:  #2a3a4a;
+      --black:  #000000;
+      --panel:  #101210;
+      --sage:   #82A694;
+      --cream:  #FAF5EE;
+      --muted:  #C9C4BA;
       --blue:   #4a7fa5;
+      --red:    #b03232;
+    }
+
+    html {
+      background-color: #000000 !important;
+      height: 100%;
     }
 
     body {
       min-height: 100vh;
-      background-color: var(--forest);
+      background-color: #000000 !important;
       font-family: 'Inter', sans-serif;
       display: flex;
       align-items: flex-start;
@@ -35,25 +39,18 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      opacity: 0;
     }
 
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: repeating-linear-gradient(
-        -30deg,
-        transparent,
-        transparent 48px,
-        rgba(122,158,110,0.05) 48px,
-        rgba(122,158,110,0.05) 49px
-      );
       pointer-events: none;
       z-index: 0;
+      opacity: 0;
     }
 
     .card {
@@ -66,29 +63,20 @@
       align-items: center;
     }
 
-    /* Avatar */
+    /* Logo real (recortado de la marca) */
     .avatar-wrap {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 2px solid var(--sage);
-      overflow: hidden;
-      margin-bottom: 16px;
-      background: var(--moss);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .avatar-wrap svg { width: 54px; height: 54px; opacity: 0.7; }
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 2px solid #82A694;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #101210;
+  }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; }
 
-    .name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.4rem;
-      letter-spacing: 0.06em;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
+  .logo-icon { width: 96px; height: auto; margin-bottom: 6px; }
+    .logo-name { width: 220px; height: auto; margin-bottom: 12px; }
 
     .tagline {
       font-size: 0.78rem;
@@ -106,8 +94,8 @@
       margin-bottom: 32px;
       padding: 5px 12px;
       border-radius: 20px;
-      border: 1px solid rgba(122,158,110,0.25);
-      background: rgba(26,46,30,0.6);
+      border: 1px solid rgba(130,166,148,0.25);
+      background: rgba(16,18,16,0.6);
     }
     .badge span {
       font-size: 0.68rem;
@@ -118,7 +106,7 @@
     .badge .dot {
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: var(--amber);
+      background: var(--sage);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -134,14 +122,14 @@
     .divider::before, .divider::after {
       content: ''; flex: 1; height: 1px;
     }
-    .divider::before { background: linear-gradient(to right, transparent, var(--moss)); }
-    .divider::after  { background: linear-gradient(to left,  transparent, var(--moss)); }
+    .divider::before { background: linear-gradient(to right, transparent, rgba(130,166,148,0.35)); }
+    .divider::after  { background: linear-gradient(to left,  transparent, rgba(130,166,148,0.35)); }
     .divider span {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--sage);
-      opacity: 0.7;
+      opacity: 0.8;
       white-space: nowrap;
     }
 
@@ -167,25 +155,25 @@
       padding: 14px 18px;
       border-radius: 4px;
       text-decoration: none;
-      border: 1px solid rgba(122,158,110,0.2);
-      background: rgba(45,74,47,0.4);
+      border: 1px solid rgba(130,166,148,0.18);
+      background: rgba(250,245,238,0.03);
       transition: background 0.22s, border-color 0.22s, transform 0.18s;
       backdrop-filter: blur(4px);
     }
     .link-btn:hover {
-      background: rgba(45,74,47,0.75);
-      border-color: rgba(122,158,110,0.55);
+      background: rgba(130,166,148,0.1);
+      border-color: rgba(130,166,148,0.5);
       transform: translateY(-2px);
     }
     .link-btn:active { transform: translateY(0); }
 
-    /* Work buttons — slightly cooler tint */
+    /* Work buttons — misma base, borde ligeramente azulado para diferenciar bloque */
     .work-btn {
-      border-color: rgba(74,127,165,0.2);
-      background: rgba(30,48,65,0.45);
+      border-color: rgba(74,127,165,0.18);
+      background: rgba(74,127,165,0.04);
     }
     .work-btn:hover {
-      background: rgba(30,48,65,0.8);
+      background: rgba(74,127,165,0.12);
       border-color: rgba(74,127,165,0.5);
     }
 
@@ -198,16 +186,16 @@
     .icon-wrap svg { width: 17px; height: 17px; }
 
     /* Social icon bg */
-    .link-ig .icon-wrap  { background: rgba(212,129,58,0.15); }
-    .link-tk .icon-wrap  { background: rgba(122,158,110,0.15); }
-    .link-yt .icon-wrap  { background: rgba(180,50,50,0.15); }
+    .link-ig .icon-wrap  { background: rgba(130,166,148,0.15); }
+    .link-tk .icon-wrap  { background: rgba(130,166,148,0.15); }
+    .link-yt .icon-wrap  { background: rgba(176,50,50,0.15); }
 
     /* Work icon bg */
-    .link-gh .icon-wrap  { background: rgba(200,191,173,0.12); }
+    .link-gh .icon-wrap  { background: rgba(201,196,186,0.12); }
     .link-li .icon-wrap  { background: rgba(74,127,165,0.15); }
-    .link-ml .icon-wrap  { background: rgba(212,129,58,0.12); }
-    .link-p1 .icon-wrap  { background: rgba(122,158,110,0.12); }
-    .link-p2 .icon-wrap  { background: rgba(122,158,110,0.12); }
+    .link-ml .icon-wrap  { background: rgba(130,166,148,0.15); }
+    .link-p1 .icon-wrap  { background: rgba(130,166,148,0.12); }
+    .link-p2 .icon-wrap  { background: rgba(130,166,148,0.12); }
 
     .link-label { flex: 1; }
     .link-label strong {
@@ -222,7 +210,7 @@
       color: var(--sage);
       letter-spacing: 0.02em;
     }
-    .work-btn .link-label span { color: var(--blue); opacity: 0.85; }
+    .work-btn .link-label span { color: var(--blue); opacity: 0.9; }
 
     .arrow {
       color: var(--sage);
@@ -239,7 +227,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--sage);
-      opacity: 0.35;
+      opacity: 0.5;
     }
 
     @media (prefers-reduced-motion: reduce) {
